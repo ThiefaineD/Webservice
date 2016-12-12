@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Accueil</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -43,18 +42,26 @@
             </div>
 
           <div class="modal-body">
-            <form class="form col-md-12 center-block">
+            <form id="signin-form" class="form col-md-12 center-block">
+              <div class="form-group">
+                <label for="prenom" class="sr-only">Prénom</label>
+                <input type="text" name="prenom" class="form-control input-lg" placeholder="Prénom">
+              </div>
+              <div class="form-group">
+                <label for="nom" class="sr-only">Nom</label>
+                <input type="text" name="nom" class="form-control input-lg" placeholder="Nom">
+              </div>
               <div class="form-group">
                 <label for="email" class="sr-only">Email</label>
-                <input type="text" class="form-control input-lg" placeholder="Email">
+                <input type="text" name="email" class="form-control input-lg" placeholder="Email">
               </div>
               <div class="form-group">
                 <label for="password" class="sr-only">Mot de passe</label>
-                <input type="password" class="form-control input-lg" placeholder="Mot de passe">
+                <input type="password" name="password" class="form-control input-lg" placeholder="Mot de passe">
               </div>
               <div class="form-group">
                 <label for="password" class="sr-only">Confirmation</label>
-                <input type="password" class="form-control input-lg" placeholder="Mot de passe">
+                <input type="password" name="confirmation" class="form-control input-lg" placeholder="Confirmation">
               </div>
 
               <button class="btn btn-lg btn-primary btn-block" type="submit" id="boutonInscription">S'inscrire</button>
@@ -93,7 +100,14 @@
             url: "Inscription.php",
             data: data,
             success: function(data){
-              alert('OK');
+              if(data == 1)
+              {
+                alert('Inscription réussie !');
+              }
+              else
+              {
+                alert(data);
+              }
             }
           });
         });
