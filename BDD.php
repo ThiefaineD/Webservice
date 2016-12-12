@@ -1,5 +1,5 @@
 <?php
-  class Connexion
+  class BDD
   {
     private static $connexion = null;
     private $pdo;
