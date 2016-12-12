@@ -1,0 +1,4 @@
+Options +FollowSymlinks
+RewriteEngine On
+
+RewriteRule ^([a-zA-Z_-]+)$ index.php?name=$1 [L]
