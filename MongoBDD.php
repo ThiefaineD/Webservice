@@ -1,5 +1,5 @@
 <?php
-  class MongoDB
+  class MongoBDD
   {
     private static $instance;
 
@@ -9,7 +9,7 @@
         {
             try
             {
-                $m = new MongoDB\Driver\Manager("mongodb://trainingup.eu:27017");
+                $m = new MongoClient("mongodb://trainingup.eu:27017");
 
             } catch (MongoConnectionException $e)
             {

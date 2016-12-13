@@ -1,15 +1,13 @@
 <?php
-  //require "BDD.php";
-  require "MongoDB.php";
+  require "MongoBDD.php";
 
   if(!empty($_POST['prenom']) && !empty($_POST['nom']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['confirmation']))
   {
     if($_POST['password'] == $_POST['confirmation'])
     {
-      $bulk = new MongoDB\Driver\BulkWrite();
       array_pop($_POST);
-      $bulk->insert($_POST);
-      MongoDB::getInstance()->executeBulkWrite('webservice.user', $bulk);
+      $collection = MongoBDD::getInstance()->webservice->user;
+      $collection->insert($_POST);
       echo 1;
     }
     else
