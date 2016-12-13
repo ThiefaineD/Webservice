@@ -1,11 +1,16 @@
 <?php
-  require "BDD.php";
+  require "MongoDB.php";
 
-  if(isset($_POST['email']) && isset($_POST['password']))
+  if(!empty($_POST['email']) && !empty($_POST['password']))
   {
-    $req = BDD::getConnexion()->getPDO()->prepare('SELECT Email, Password FROM client WHERE Email = ?');
-    $req->execute(array($_POST['email']));
-    $client = $req->fetch();
+    // $req = BDD::getConnexion()->getPDO()->prepare('SELECT Email, Password FROM client WHERE Email = ?');
+    // $req->execute(array($_POST['email']));
+    // $client = $req->fetch();
+
+    $query = new MongoDB\Driver\Query(array('email' => $_POST['email']));
+    $cursor = MongoDB::getInstance()->executeQuery('webservice.user', $query);
+    print_r($cursor);
+    die();
 
     if($client['Password'] == sha1($_POST['password']))
     {

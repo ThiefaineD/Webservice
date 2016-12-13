@@ -1,12 +1,15 @@
 <?php
-  require "BDD.php";
+  //require "BDD.php";
+  require "MongoDB.php";
 
-  if(isset($_POST['prenom']) && isset($_POST['nom']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['confirmation']))
+  if(!empty($_POST['prenom']) && !empty($_POST['nom']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['confirmation']))
   {
     if($_POST['password'] == $_POST['confirmation'])
     {
-      $req = BDD::getConnexion()->getPDO()->prepare("INSERT INTO client(Prenom, Nom, Email, Password) VALUES(?, ?, ?, ?)");
-      $req->execute(array($_POST['prenom'], $_POST['nom'], $_POST['email'], sha1($_POST['password'])));
+      $bulk = new MongoDB\Driver\BulkWrite();
+      array_pop($_POST);
+      $bulk->insert($_POST);
+      MongoDB::getInstance()->executeBulkWrite('webservice.user', $bulk);
       echo 1;
     }
     else

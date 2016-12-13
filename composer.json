@@ -1,0 +1,12 @@
+{
+    "name": "theo/webservice",
+    "authors": [
+        {
+            "name": "Théo ANTON",
+            "email": "theoanton@sfr.fr"
+        }
+    ],
+    "require": {
+        "mongodb/mongodb": "^1.1"
+    }
+}
