@@ -113,7 +113,7 @@
               <br />
             </form>
             <br />
-            <p class="text-center"><a href="#" id="lienAnnulation">Annuler</a></p>
+            <p class="text-center"><a href="index.php">Annuler</a></p>
         </div>
       </div>
     </div>
@@ -126,13 +126,6 @@
 
           $('#loginForm').hide();
           $('#signinForm').show();
-        });
-
-        $('#lienAnnulation').on('click', function(e){
-          e.preventDefault();
-
-          $('#loginForm').show();
-          $('#signinForm').hide();
         });
 
         // Inscription

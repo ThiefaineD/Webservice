@@ -1,4 +1,8 @@
-Options +FollowSymlinks
+Options +FollowSymLinks
 RewriteEngine On
 
-RewriteRule ^([a-zA-Z_-]+)$ index.php?name=$1 [L]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule ^([^/]*)$ API.php?class=$1 [QSA,L]
+RewriteRule ^(.+)/(.+)$ API.php?class=$1&id=$2 [QSA,L]
